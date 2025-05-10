@@ -3,60 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV Analyzer & Cover Letter Generator</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Career Neuramind AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --secondary: #a855f7;
+      --accent: #ec4899;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .upload-section {
+      border: 2px dashed var(--primary);
+      padding: 2rem;
+      border-radius: 1rem;
+      margin: 1rem 0;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .upload-section:hover {
+      border-color: var(--secondary);
+      transform: translateY(-5px);
+    }
+
+    .input-section {
+      width: 100%;
+      margin: 1rem 0;
+      opacity: 0;
+      animation: slideIn 0.5s forwards;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .generate-btn {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border: none;
+      padding: 1rem 2rem;
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .generate-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--primary);
+    }
+
+    .input-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #94a3b8;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #334155;
+      border-radius: 0.5rem;
+      background: #1e293b;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      margin-top: 2rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .credit {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      font-size: 0.8rem;
+      color: #64748b;
+      opacity: 0;
+      animation: fadeIn 1s 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .loader {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 1rem auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1 class="title">CV Analyzer & Cover Letter Generator</h1>
+    <h1 class="title animate__animated animate__fadeIn">Career Neuramind AI 🌟</h1>
 
-    <!-- Upload CV -->
-    <div class="upload-section">
-      <label for="cv-upload" class="upload-label">Upload Your CV (PDF):</label>
-      <input type="file" id="cv-upload" accept=".pdf">
+    <div class="upload-section animate__animated animate__fadeInUp">
+      <label for="cv-upload" class="upload-label">📁 Upload Your CV (PDF)</label>
+      <input type="file" id="cv-upload" accept=".pdf" class="animate__animated animate__fadeIn">
     </div>
 
-    <!-- Email -->
-    <div class="input-section">
-      <label for="email" class="input-label">Your Email:</label>
+    <div class="input-section" style="animation-delay: 0.2s">
+      <label for="email" class="input-label">✉️ Your Email</label>
       <input type="email" id="email" placeholder="your.email@example.com">
     </div>
 
-    <!-- LinkedIn Profile -->
-    <div class="input-section">
-      <label for="linkedin" class="input-label">LinkedIn Profile URL:</label>
+    <div class="input-section" style="animation-delay: 0.4s">
+      <label for="linkedin" class="input-label">💼 LinkedIn Profile</label>
       <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
     </div>
 
-    <!-- Job Role -->
-    <div class="input-section">
-      <label for="job-role" class="input-label">Job Title / Keywords:</label>
-      <input type="text" id="job-role" placeholder="e.g. Data Scientist in Berlin">
+    <div class="input-section" style="animation-delay: 0.6s">
+      <label for="job-role" class="input-label">🔍 Dream Position</label>
+      <input type="text" id="job-role" placeholder="e.g. Senior UX Designer @ FAANG">
     </div>
 
-    <!-- Agent Task Selection -->
-    <div class="input-section">
-      <label for="task-select" class="input-label">What do you want to do?</label>
+    <div class="input-section" style="animation-delay: 0.8s">
+      <label for="task-select" class="input-label">🎯 Mission Select</label>
       <select id="task-select">
-        <option value="search">Search Jobs</option>
-        <option value="analyze">Analyze CV</option>
-        <option value="generate">Generate Cover Letter</option>
-        <option value="full">Full Workflow (Search → Analyze → Generate)</option>
+        <option value="search">🔎 Job Search</option>
+        <option value="analyze">📊 CV Analysis</option>
+        <option value="generate">✍️ Cover Letter Gen</option>
+        <option value="full">🚀 Full Launch Sequence</option>
       </select>
     </div>
 
-    <!-- Submit Button -->
-    <button class="generate-btn">Run Agent</button>
+    <button class="generate-btn animate__animated animate__fadeInUp">Launch AI Agent 🚀</button>
+    <div class="loader"></div>
 
-    <!-- Download Area -->
     <div id="download-area" class="hidden">
-      <a id="download-link" href="#" class="download-btn" download>Download Cover Letter</a>
+      <a id="download-link" href="#" class="download-btn">Download Magic ✨</a>
     </div>
+
+    <div class="credit">Crafted with ❤️ by Pruthviraj Rathod</div>
   </div>
 
   <script>
-    // Dummy agent run logic
-    document.querySelector('.generate-btn').onclick = () => {
+    document.querySelector('.generate-btn').onclick = async () => {
+      const btn = document.querySelector('.generate-btn');
+      const loader = document.querySelector('.loader');
       const cv = document.getElementById('cv-upload').files[0];
       const email = document.getElementById('email').value.trim();
       const linkedin = document.getElementById('linkedin').value.trim();
@@ -68,9 +226,57 @@
         return;
       }
 
-      alert(`Task "${task}" started using:\n- Email: ${email}\n- LinkedIn: ${linkedin}\n- Role: ${role}`);
-      document.getElementById('download-area').classList.remove('hidden');
+      btn.style.display = 'none';
+      loader.style.display = 'block';
+
+      // Prepare form data for backend
+      const formData = new FormData();
+      formData.append('cv', cv);
+      formData.append('email', email);
+      formData.append('linkedin', linkedin);
+      formData.append('role', role);
+      formData.append('task', task);
+
+      try {
+        // Send data to backend
+        const response = await fetch('/api/agent', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to process the request.');
+        }
+
+        const result = await response.json();
+        loader.style.display = 'none';
+        btn.style.display = 'block';
+
+        // Handle response
+        if (result.download_url) {
+          const downloadLink = document.getElementById('download-link');
+          downloadLink.href = result.download_url;
+          document.getElementById('download-area').classList.remove('hidden');
+        } else {
+          alert('Task completed, but no file to download.');
+        }
+      } catch (error) {
+        loader.style.display = 'none';
+        btn.style.display = 'block';
+        alert(`Error: ${error.message}`);
+      }
     };
+
+    // Add animation to input sections on scroll
+    const sections = document.querySelectorAll('.input-section');
+    window.addEventListener('scroll', () => {
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < window.innerHeight * 0.8) {
+          section.style.animationPlayState = 'running';
+        }
+      });
+    });
   </script>
 </body>
 </html>

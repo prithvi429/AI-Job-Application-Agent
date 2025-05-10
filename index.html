@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Analyzer & Cover Letter Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">CV Analyzer & Cover Letter Generator</h1>
+
+    <!-- Upload CV -->
+    <div class="upload-section">
+      <label for="cv-upload" class="upload-label">Upload Your CV (PDF):</label>
+      <input type="file" id="cv-upload" accept=".pdf">
+    </div>
+
+    <!-- Email -->
+    <div class="input-section">
+      <label for="email" class="input-label">Your Email:</label>
+      <input type="email" id="email" placeholder="your.email@example.com">
+    </div>
+
+    <!-- LinkedIn Profile -->
+    <div class="input-section">
+      <label for="linkedin" class="input-label">LinkedIn Profile URL:</label>
+      <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+    </div>
+
+    <!-- Job Role -->
+    <div class="input-section">
+      <label for="job-role" class="input-label">Job Title / Keywords:</label>
+      <input type="text" id="job-role" placeholder="e.g. Data Scientist in Berlin">
+    </div>
+
+    <!-- Agent Task Selection -->
+    <div class="input-section">
+      <label for="task-select" class="input-label">What do you want to do?</label>
+      <select id="task-select">
+        <option value="search">Search Jobs</option>
+        <option value="analyze">Analyze CV</option>
+        <option value="generate">Generate Cover Letter</option>
+        <option value="full">Full Workflow (Search → Analyze → Generate)</option>
+      </select>
+    </div>
+
+    <!-- Submit Button -->
+    <button class="generate-btn">Run Agent</button>
+
+    <!-- Download Area -->
+    <div id="download-area" class="hidden">
+      <a id="download-link" href="#" class="download-btn" download>Download Cover Letter</a>
+    </div>
+  </div>
+
+  <script>
+    // Dummy agent run logic
+    document.querySelector('.generate-btn').onclick = () => {
+      const cv = document.getElementById('cv-upload').files[0];
+      const email = document.getElementById('email').value.trim();
+      const linkedin = document.getElementById('linkedin').value.trim();
+      const role = document.getElementById('job-role').value.trim();
+      const task = document.getElementById('task-select').value;
+
+      if (!cv || !email || !role) {
+        alert("Please fill out all required fields (CV, email, role).");
+        return;
+      }
+
+      alert(`Task "${task}" started using:\n- Email: ${email}\n- LinkedIn: ${linkedin}\n- Role: ${role}`);
+      document.getElementById('download-area').classList.remove('hidden');
+    };
+  </script>
+</body>
+</html>

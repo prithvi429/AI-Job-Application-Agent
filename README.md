@@ -1,6 +1,6 @@
 # CV Analyzer & Cover Letter Generator
 
-This project is a web-based application that helps users analyze their CVs, search for jobs, and generate tailored cover letters. It provides an intuitive interface for uploading CVs, entering job-related details, and running various tasks using an AI-powered agent.
+AI Job Application Agent is an intelligent tool designed to streamline and automate the job application process. This project leverages artificial intelligence to help users apply for jobs quickly and efficiently. It assists in generating tailored resumes, cover letters, and matching job descriptions with the best-suited roles, all in one place.
 
 ## Features
 - **Upload CV**: Upload your CV in PDF format.
